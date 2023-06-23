@@ -1,6 +1,9 @@
 # UM Registration Customer Codes
 Extension to Ultimate Member for Registrationb Customer Codes Validation.
 
+The Customer code is always saved with every user ( meta_key: `customer_code` ).
+In single usage mode code is refused for registration second time and old used codes are notified for removal at the UM settings page.
+
 ## UM Settings
 UM Settings -> Appearance -> Registration Form
 1. Registration Customer Codes - Valid codes - All the valid customer codes (comma separated) for the Registration Form.
