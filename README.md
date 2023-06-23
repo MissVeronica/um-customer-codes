@@ -13,5 +13,9 @@ UM Settings -> Appearance -> Registration Form
 ## UM Forms Builder
 1. "Customer code" predefined field for insert on the Registration page
 
+## Translations or Text changes
+1. Use the "Say What?" plugin with text domain ultimate-member
+2. https://wordpress.org/plugins/say-what/
+
 ## Installation
 1. Download the zip file and install as a WP Plugin, activate the plugin.
