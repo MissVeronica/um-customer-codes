@@ -2,7 +2,7 @@
 /**
  * Plugin Name:         Ultimate Member - Customer Codes
  * Description:         Extension to Ultimate Member for Registrationb Customer Codes Validation.
- * Version:             1.0.0
+ * Version:             1.1.0
  * Requires PHP:        7.4
  * Author:              Miss Veronica
  * License:             GPL v3 or later
@@ -10,7 +10,7 @@
  * Author URI:          https://github.com/MissVeronica
  * Text Domain:         ultimate-member
  * Domain Path:         /languages
- * UM version:          2.6.3
+ * UM version:          2.8.3
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; 
@@ -91,13 +91,13 @@ class UM_Customer_Codes {
 
     public function um_edit_label_customer_code( $label, $data ) {
 
-        if ( $data['metakey'] == 'customer_code' && um_is_core_page( 'account' ) ) {
+        if ( isset( $data['metakey'] ) && $data['metakey'] == 'customer_code' && um_is_core_page( 'account' ) ) {
             $label = str_replace( '*', '', $label );
         }
         return $label;
     }
 
-    public function um_settings_structure_customer_codes( $settings ) {
+    public function um_settings_structure_customer_codes( $settings_structure ) {
 
         $description = '';
         $tooltip = __( 'All the valid customer codes (comma separated) for the 
@@ -150,29 +150,32 @@ class UM_Customer_Codes {
             }
         }
 
-        $settings['appearance']['sections']['registration_form']['fields'][] = array(
+        $settings_structure['appearance']['sections']['registration_form']['form_sections']['customer_codes']['title']       = __( 'Registration Customer Codes', 'ultimate-member' );
+        $settings_structure['appearance']['sections']['registration_form']['form_sections']['customer_codes']['description'] = __( 'Plugin version 1.1.0 - tested with UM 2.8.3', 'ultimate-member' );
+
+        $settings_structure['appearance']['sections']['registration_form']['form_sections']['customer_codes']['fields'][] = array(
             'id'          => 'customer_codes',
             'type'        => 'text',
-            'label'       => __( 'Registration Customer Codes - Valid codes', 'ultimate-member' ),
-            'tooltip'     => $tooltip,
-            'description' => $description,
+            'label'       => __( 'Valid codes', 'ultimate-member' ),
+            //'tooltip'     => $tooltip,
+            'description' => $tooltip . '<br />' . $description,
         ); 
 
-        $settings['appearance']['sections']['registration_form']['fields'][] = array(
+        $settings_structure['appearance']['sections']['registration_form']['form_sections']['customer_codes']['fields'][] = array(
             'id'          => 'customer_codes_single',
             'type'        => 'checkbox',
-            'label'       => __( 'Registration Customer Codes - Single usage codes', 'ultimate-member' ),
-            'tooltip'     => __( 'Click checkbox if the Customer Codes only can be used one time.', 'ultimate-member' ),
+            'label'       => __( 'Single usage codes', 'ultimate-member' ),
+            'description' => __( 'Click checkbox if the Customer Codes only can be used one time.', 'ultimate-member' ),
         );
 
-        $settings['appearance']['sections']['registration_form']['fields'][] = array(
+        $settings_structure['appearance']['sections']['registration_form']['form_sections']['customer_codes']['fields'][] = array(
             'id'          => 'customer_codes_account',
             'type'        => 'checkbox',
-            'label'       => __( 'Registration Customer Codes - Account page', 'ultimate-member' ),
-            'tooltip'     => __( 'Click checkbox for Customer Code display in view mode on the user Account page.', 'ultimate-member' ),
+            'label'       => __( 'Account page', 'ultimate-member' ),
+            'description' => __( 'Click checkbox for Customer Code display in view mode on the user Account page.', 'ultimate-member' ),
         );
 
-        return $settings;
+        return $settings_structure;
     }
 
     public function um_predefined_fields_customer_codes( $predefined_fields ) {
@@ -196,3 +199,4 @@ class UM_Customer_Codes {
 }
 
 new UM_Customer_Codes();
+
