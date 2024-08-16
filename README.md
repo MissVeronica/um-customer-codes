@@ -23,5 +23,5 @@ In single usage mode code is refused for registration second time and old used c
 1. Version 1.1.0 Updated for UM 2.8.3
 2. Version 1.2.0 Additional error message: "No Customer Codes available" and Code improvements
 
-## Installation
+## Installation & Updates
 1. Download the zip file and install as a WP Plugin, activate the plugin.
