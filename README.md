@@ -1,4 +1,4 @@
-# UM Registration Customer Codes
+# UM Registration Customer Codes version 1.2.0
 Extension to Ultimate Member for Registrationb Customer Codes Validation.
 
 The Customer code is always saved with every user ( meta_key: `customer_code` ).
